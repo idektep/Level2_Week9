@@ -7,6 +7,7 @@ class Motor
 public:
 
   void motorInit();
+  static void ledBlink(int delayTime);
   static void forward();
   static void backward();
   static void slide_left();
