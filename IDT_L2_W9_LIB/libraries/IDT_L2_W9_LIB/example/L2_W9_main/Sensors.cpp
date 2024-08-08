@@ -5,32 +5,12 @@
 #define TrigPin 5
 #define EchoPin 35
 
-#define LED_R 16
-#define LED_L 17
-
 long duration, distance;
 
 int colision_distance_v = 0;
 
-void ledBlink(int delayTime)
-{
-    digitalWrite(LED_R, LOW);
-    digitalWrite(LED_L, LOW);
-    delay(delayTime);
-    digitalWrite(LED_R, HIGH);
-    digitalWrite(LED_L, HIGH);
-    delay(delayTime);
-}
-
 void Sensors::ultraInit()
 {
-    // TURN ON LED LEFT AND RIGHT
-    pinMode(LED_L, OUTPUT);
-    pinMode(LED_R, OUTPUT);
-
-    digitalWrite(LED_R, HIGH);
-    digitalWrite(LED_L, HIGH);
-
     pinMode(TrigPin, OUTPUT);
     pinMode(EchoPin, INPUT);
 }
@@ -64,12 +44,12 @@ void Sensors::ultraCollisionCheck()
     if (distance <= colision_distance_v && distance > 0)
     {
         Motor::stop();
-        ledBlink(40);
+        Motor::ledBlink(40);
         delay(40);
         Motor::backward();
         delay(200);
         Motor::stop();
-        ledBlink(40);
+        Motor::ledBlink(40);
         delay(40);
     }
 }
