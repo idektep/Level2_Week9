@@ -205,22 +205,22 @@ void WARC::handleRoot(AsyncWebServerRequest *request)
 
 void WARC::handleReadSensor(AsyncWebServerRequest *request)
 {
-  long distance = Sensors::ultraGetDistance();
+  long distance = Sensors::--------------------();
   String json = "{\"distance\":" + String(distance) + "}";
   request->send(200, "application/json", json);
 }
 
 void WARC::handleReadDHT(AsyncWebServerRequest *request)
 {
-  long temp =  DHTZ::DHTZReadTemp();
-  long humid = DHTZ::DHTZReadHumid();
+  long temp =  DHTZ::--------------------();
+  long humid = DHTZ::--------------------();
   String dht_json = "{\"temp\":" + String(temp) + ",\"humid\":" + String(humid) +"}" ;
   request->send(200, "application/json", dht_json);
 }
 
 void WARC::handleReadLight(AsyncWebServerRequest *request)
 {
-  int light =  LDR::LdrMeasure();
+  int light =  LDR::--------------------();
   String json_light = "{\"light\":" + String(light) + "}" ;
   request->send(200, "application/json", json_light);
 }
